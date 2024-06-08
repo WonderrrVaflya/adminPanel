@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Form, Input } from 'antd';
+import { Button, Col, Form, Input, Row } from 'antd';
 import { Store } from '../types';
 
 interface StoreFormProps {
@@ -13,35 +13,30 @@ const StoreForm: React.FC<StoreFormProps> = ({ onAddStore }) => {
     const newStore: Store = {
       id: Date.now().toString(),
       ...values,
-      links: [],
     };
     onAddStore(newStore);
     form.resetFields();
   };
 
   return (
-    <Form
-    name="basic"
-    labelCol={{ span: 8 }}
-    wrapperCol={{ span: 16 }}
-    style={{ maxWidth: 600 }}
-    initialValues={{ remember: true }}
-    onFinish={onFinish}
-    autoComplete="off"
-  >
-      <Form.Item name="name" rules={[{ required: true, message: 'Введите Название магазина!' }]}>
-        <Input placeholder="Название магазина" />
-      </Form.Item>
-      <Form.Item name="latitude" rules={[{ required: true, message: 'Введите Широту!' }]}>
-        <Input placeholder="Широта" />
-      </Form.Item>
-      <Form.Item name="longitude" rules={[{ required: true, message: 'Введите Долготу!' }]}>
-        <Input placeholder="Долгота" />
-      </Form.Item>
-      <Form.Item>
-        <Button type="primary" htmlType="submit">Добавить магазин</Button>
-      </Form.Item>
-    </Form>
+    <Row justify="center" style={{ marginTop: '50px' }}>
+      <Col span={16}>
+        <Form form={form} layout="vertical" onFinish={onFinish}>
+          <Form.Item name="name" label="Название Магазина" rules={[{ required: true, message: 'Введите название магазина!' }]}>
+            <Input />
+          </Form.Item>
+          <Form.Item name="latitude" label="Широта" rules={[{ required: true, message: 'Введите Широту!' }]}>
+            <Input />
+          </Form.Item>
+          <Form.Item name="longitude" label="Долгота" rules={[{ required: true, message: 'Введите Долготу!' }]}>
+            <Input />
+          </Form.Item>
+          <Form.Item>
+            <Button type="primary" htmlType="submit">Добавить магазин</Button>
+          </Form.Item>
+        </Form>
+      </Col>
+    </Row>
   );
 };
 

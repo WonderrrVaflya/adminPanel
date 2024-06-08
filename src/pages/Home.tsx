@@ -3,6 +3,7 @@ import axios from 'axios';
 import StoreForm from '../components/StoreForm';
 import StoreList from '../components/StoreList';
 import { Store } from '../types';
+import { Row, Col } from 'antd';
 
 const Home: React.FC = () => {
   const [stores, setStores] = useState<Store[]>([]);
@@ -16,7 +17,7 @@ const Home: React.FC = () => {
       const response = await axios.get('http://localhost:5000/stores');
       setStores(response.data);
     } catch (error) {
-      console.error('Error fetching stores:', error);
+      console.error('Ошибка получения магазинов:', error);
     }
   };
 
@@ -25,23 +26,22 @@ const Home: React.FC = () => {
       const response = await axios.post('http://localhost:5000/stores', store);
       setStores([...stores, response.data]);
     } catch (error) {
-      console.error('Error adding store:', error);
+      console.error('Ошибка добавления магазина:', error);
     }
   };
 
-  const deleteStore = async (id: string) => {
-    try {
-      await axios.delete(`http://localhost:5000/stores/${id}`);
-      setStores(stores.filter(store => store.id !== id));
-    } catch (error) {
-      console.error('Error deleting store:', error);
-    }
+  const toggleActive = async (id: string, active: boolean) => {
+    setStores(stores.map(store => store.id === id ? { ...store, active } : store));
   };
 
   return (
     <div>
-      <StoreForm onAddStore={addStore} />
-      <StoreList stores={stores} onDeleteStore={deleteStore} />
+      <Row justify="center" style={{ marginTop: '10px' }}>
+        <Col span={20}>
+          <StoreForm onAddStore={addStore} />
+          <StoreList stores={stores} onToggleActive={toggleActive} />
+        </Col>
+      </Row>
     </div>
   );
 };
