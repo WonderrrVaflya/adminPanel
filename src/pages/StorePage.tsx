@@ -25,7 +25,8 @@ const StorePage: React.FC = () => {
   const addLinks = async (values: any) => {
     try {
       const newLinks = values.links.split('\n').filter((link: string) => link.trim() !== '');
-      const updatedStore = { ...store, links: newLinks };
+      const updatedLinks = [...(store?.links || []), ...newLinks];
+      const updatedStore = { ...store, links: updatedLinks };
       await axios.put(`http://localhost:5000/stores/${id}`, updatedStore);
       setStore(updatedStore as Store);
       form.resetFields();
@@ -33,6 +34,7 @@ const StorePage: React.FC = () => {
       console.error('Ошибка добавления ссылок:', error);
     }
   };
+  
 
   return (
     <Row justify="center" style={{ marginTop: '10px' }}>
