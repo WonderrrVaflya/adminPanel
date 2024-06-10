@@ -32,6 +32,9 @@ const StoreForm: React.FC<StoreFormProps> = ({ onAddStore }) => {
           <Form.Item name="longitude" label="Долгота" rules={[{ required: true, message: 'Введите Долготу!' }]}>
             <Input />
           </Form.Item>
+          <Form.Item name="address" label="Адресс" rules={[{ required: true, message: 'Введите Адресс!' }]}>
+            <Input />
+          </Form.Item>
           <Form.Item>
             <Button type="primary" htmlType="submit">Добавить магазин</Button>
           </Form.Item>

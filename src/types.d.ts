@@ -4,6 +4,7 @@ export interface Store {
   name: string;
   latitude: string;
   longitude: string;
+  address: string;
   itemCount: number;
   scrapedItemCount: number;
   lastUpdated: string;

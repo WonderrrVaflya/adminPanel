@@ -43,8 +43,9 @@ const StorePage: React.FC = () => {
           {store && (
             <div>
               <h1>{store.name}</h1>
-              <p>Широта: {store.latitude}</p>
-              <p>Долгота: {store.longitude}</p>
+              <p>Адресс: <b>{store.address}</b></p>
+              <p>Широта: <b>{store.latitude}</b></p>
+              <p>Долгота: <b>{store.longitude}</b></p>
               <h2>Добавить ссылки</h2>
               <Form form={form} onFinish={addLinks}>
                 <Form.Item name="links" rules={[{ required: true, message: 'Введите ссылки!' }]}>
