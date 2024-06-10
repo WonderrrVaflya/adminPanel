@@ -1,17 +1,12 @@
 export interface Store {
+  links: any;
   id: string;
   name: string;
   latitude: string;
   longitude: string;
   itemCount: number;
   scrapedItemCount: number;
+  lastUpdated: string;
   active: boolean;
-}
-
-export interface Material {
-  id: string;
-  name: string;
-  storeId: string;
-  links: string[];
 }
 

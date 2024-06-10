@@ -43,7 +43,7 @@ const StoreList: React.FC<StoreListProps> = ({ stores, onToggleActive }) => {
             <SettingOutlined style={{ marginRight: 10 }} />
           </Popover>
           <span style={{ cursor: 'pointer', color: '#1890ff' }} onClick={() => navigate(`/stores/${record.id}`)}>
-          {text}
+            {text}
           </span>
         </>
       ),
@@ -57,6 +57,11 @@ const StoreList: React.FC<StoreListProps> = ({ stores, onToggleActive }) => {
       title: 'Запарсено за сегодня',
       dataIndex: 'scrapedItemCount',
       key: 'scrapedItemCount',
+    },
+    {
+      title: 'Последнее обновление',
+      dataIndex: 'lastUpdated',
+      key: 'lastUpdated',
     },
     {
       title: 'Активность',
@@ -82,3 +87,4 @@ const StoreList: React.FC<StoreListProps> = ({ stores, onToggleActive }) => {
 };
 
 export default StoreList;
+
