@@ -13,6 +13,7 @@ const StoreForm: React.FC<StoreFormProps> = ({ onAddStore }) => {
     const newStore: Store = {
       id: Date.now().toString(),
       ...values,
+      links: undefined
     };
     onAddStore(newStore);
     form.resetFields();
