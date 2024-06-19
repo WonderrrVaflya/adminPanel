@@ -23,7 +23,13 @@ const StoreForm: React.FC<StoreFormProps> = ({ onAddStore }) => {
     <Row justify="center" style={{ marginTop: '50px' }}>
       <Col span={16}>
         <Form form={form} layout="vertical" onFinish={onFinish}>
-          <Form.Item name="Name" label="Название Магазина" rules={[{ required: true, message: 'Введите название магазина!' }]}>
+          <Form.Item name="name" label="Название Магазина" rules={[{ required: true, message: 'Введите название магазина!' }]}>
+            <Input />
+          </Form.Item>
+          <Form.Item name="latitude" label="Широта" rules={[{ required: true, message: 'Введите Широту!' }]}>
+            <Input />
+          </Form.Item>
+          <Form.Item name="longitude" label="Долгота" rules={[{ required: true, message: 'Введите Долготу!' }]}>
             <Input />
           </Form.Item>
           <Form.Item>

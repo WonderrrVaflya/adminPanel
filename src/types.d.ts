@@ -1,14 +1,12 @@
 export interface Store {
-  URLs: any;
-  ID: any;
-  Name: string;
+  links: any;
+  id: any;
+  name: string;
+  latitude: string;
+  longitude: string;
+  itemCount: number;
+  scrapedItemCount: number;
+  lastUpdated: string;
+  active: boolean;
 }
-  // latitude: string;
-  // longitude: string;
-  // address: string;
-  // itemCount: number;
-  // scrapedItemCount: number;
-  // lastUpdated: string;
-  // active: boolean;
-
 

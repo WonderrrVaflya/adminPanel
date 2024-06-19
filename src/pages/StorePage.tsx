@@ -14,7 +14,7 @@ const StorePage: React.FC = () => {
       try {
         const response = await axios.get(`https://parsertovarov-6b40c4ac317f.herokuapp.com/sites`);
         if (id) {
-          const storeData = response.data.find((item: Store) => item.ID === parseInt(id, 10));
+          const storeData = response.data.find((item: Store) => item.id === parseInt(id, 10));
           setStore(storeData);
         }
       } catch (error) {
@@ -28,7 +28,7 @@ const StorePage: React.FC = () => {
   const addLinks = async (values: any) => {
     try {
       const newLinks = values.links.split('\n').filter((link: string) => link.trim() !== '');
-      const updatedLinks = store?.URLs ? store.URLs.split('\n').concat(newLinks) : newLinks;
+      const updatedLinks = store?.links ? store.links.split('\n').concat(newLinks) : newLinks;
       const updatedStore = { ...store, URLs: updatedLinks.join('\n') };
 
       await axios.put(`https://parsertovarov-6b40c4ac317f.herokuapp.com/sites`, updatedStore);
@@ -45,7 +45,9 @@ const StorePage: React.FC = () => {
         <div>
           {store && (
             <div>
-              <h1>{store.Name}</h1>
+              <h1>{store.name}</h1>
+              <p>Широта: {store.latitude}</p>
+              <p>Долгота: {store.longitude}</p>
               <h2>Добавить ссылки</h2>
               <Form form={form} onFinish={addLinks}>
                 <Form.Item name="links" rules={[{ required: true, message: 'Введите ссылки!' }]}>
@@ -55,11 +57,11 @@ const StorePage: React.FC = () => {
                   <Button type="primary" htmlType="submit">Добавить ссылки</Button>
                 </Form.Item>
               </Form>
-              {store.URLs && store.URLs.length > 0 && (
+              {store.links && store.links.length > 0 && (
                 <div>
                   <h2>Ссылки</h2>
                   <ul>
-                    {store.URLs.split('\n').map((link: string, index: number) => (
+                    {store.links.split('\n').map((link: string, index: number) => (
                       <li key={index}>
                         <a href={link} target="_blank" rel="noopener noreferrer">
                           {link}
