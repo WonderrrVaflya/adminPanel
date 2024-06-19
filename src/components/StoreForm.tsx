@@ -9,11 +9,17 @@ interface StoreFormProps {
 const StoreForm: React.FC<StoreFormProps> = ({ onAddStore }) => {
   const [form] = Form.useForm();
 
-  const onFinish = (values: Omit<Store, 'ID' | 'URLs'>) => {
+  const onFinish = (values: Omit<Store, 'id' | 'links'>) => {
     const newStore: Store = {
-      ID: Number(Date.now()),  
-      Name: values.Name,
-      URLs: '' 
+      id: Number(Date.now()),
+      name: values.name,
+      links: '',
+      latitude: '',
+      longitude: '',
+      itemCount: 0,
+      scrapedItemCount: 0,
+      lastUpdated: '',
+      active: false
     };
     onAddStore(newStore);
     form.resetFields();

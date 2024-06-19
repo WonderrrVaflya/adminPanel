@@ -27,7 +27,7 @@ const StoreList: React.FC = () => {
       dataIndex: 'Name',
       key: 'Name',
       render: (text: string, record: Store) => (
-        <span style={{ cursor: 'pointer', color: '#1890ff' }} onClick={() => navigate(`/stores/${record.ID}`)}>
+        <span style={{ cursor: 'pointer', color: '#1890ff' }} onClick={() => navigate(`/stores/${record.id}`)}>
           {text}
         </span>
       ),

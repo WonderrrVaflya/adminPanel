@@ -30,9 +30,9 @@ const Home: React.FC = () => {
     }
   };
 
-  // const toggleActive = async (id: string, active: boolean) => {
-  //   setStores(stores.map(store => store.ID === id ? { ...store, active } : store));
-  // };
+    const toggleActive = async (id: string, active: boolean) => {
+      setStores(stores.map(store => store.id === id ? { ...store, active } : store));
+    };
 
   return (
     <div>
