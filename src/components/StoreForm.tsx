@@ -9,11 +9,11 @@ interface StoreFormProps {
 const StoreForm: React.FC<StoreFormProps> = ({ onAddStore }) => {
   const [form] = Form.useForm();
 
-  const onFinish = (values: Omit<Store, 'id' | 'links'>) => {
+  const onFinish = (values: Omit<Store, 'ID' | 'URLs'>) => {
     const newStore: Store = {
-      id: Date.now().toString(),
-      ...values,
-      links: undefined
+      ID: Number(Date.now()),  
+      Name: values.Name,
+      URLs: '' 
     };
     onAddStore(newStore);
     form.resetFields();
@@ -23,16 +23,7 @@ const StoreForm: React.FC<StoreFormProps> = ({ onAddStore }) => {
     <Row justify="center" style={{ marginTop: '50px' }}>
       <Col span={16}>
         <Form form={form} layout="vertical" onFinish={onFinish}>
-          <Form.Item name="name" label="Название Магазина" rules={[{ required: true, message: 'Введите название магазина!' }]}>
-            <Input />
-          </Form.Item>
-          <Form.Item name="latitude" label="Широта" rules={[{ required: true, message: 'Введите Широту!' }]}>
-            <Input />
-          </Form.Item>
-          <Form.Item name="longitude" label="Долгота" rules={[{ required: true, message: 'Введите Долготу!' }]}>
-            <Input />
-          </Form.Item>
-          <Form.Item name="address" label="Адресс" rules={[{ required: true, message: 'Введите Адресс!' }]}>
+          <Form.Item name="Name" label="Название Магазина" rules={[{ required: true, message: 'Введите название магазина!' }]}>
             <Input />
           </Form.Item>
           <Form.Item>
@@ -45,3 +36,4 @@ const StoreForm: React.FC<StoreFormProps> = ({ onAddStore }) => {
 };
 
 export default StoreForm;
+

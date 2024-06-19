@@ -12,8 +12,11 @@ const StorePage: React.FC = () => {
   useEffect(() => {
     const fetchStore = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/stores/${id}`);
-        setStore(response.data);
+        const response = await axios.get(`https://parsertovarov-6b40c4ac317f.herokuapp.com/sites`);
+        if (id) {
+          const storeData = response.data.find((item: Store) => item.ID === parseInt(id, 10));
+          setStore(storeData);
+        }
       } catch (error) {
         console.error('Ошибка получения магазина:', error);
       }
@@ -25,16 +28,16 @@ const StorePage: React.FC = () => {
   const addLinks = async (values: any) => {
     try {
       const newLinks = values.links.split('\n').filter((link: string) => link.trim() !== '');
-      const updatedLinks = [...(store?.links || []), ...newLinks];
-      const updatedStore = { ...store, links: updatedLinks };
-      await axios.put(`http://localhost:5000/stores/${id}`, updatedStore);
+      const updatedLinks = store?.URLs ? store.URLs.split('\n').concat(newLinks) : newLinks;
+      const updatedStore = { ...store, URLs: updatedLinks.join('\n') };
+
+      await axios.put(`https://parsertovarov-6b40c4ac317f.herokuapp.com/sites`, updatedStore);
       setStore(updatedStore as Store);
       form.resetFields();
     } catch (error) {
       console.error('Ошибка добавления ссылок:', error);
     }
   };
-  
 
   return (
     <Row justify="center" style={{ marginTop: '10px' }}>
@@ -42,10 +45,7 @@ const StorePage: React.FC = () => {
         <div>
           {store && (
             <div>
-              <h1>{store.name}</h1>
-              <p>Адресс: <b>{store.address}</b></p>
-              <p>Широта: <b>{store.latitude}</b></p>
-              <p>Долгота: <b>{store.longitude}</b></p>
+              <h1>{store.Name}</h1>
               <h2>Добавить ссылки</h2>
               <Form form={form} onFinish={addLinks}>
                 <Form.Item name="links" rules={[{ required: true, message: 'Введите ссылки!' }]}>
@@ -55,11 +55,11 @@ const StorePage: React.FC = () => {
                   <Button type="primary" htmlType="submit">Добавить ссылки</Button>
                 </Form.Item>
               </Form>
-              {store.links && store.links.length > 0 && (
+              {store.URLs && store.URLs.length > 0 && (
                 <div>
                   <h2>Ссылки</h2>
                   <ul>
-                    {store.links.map((link: string, index: number) => (
+                    {store.URLs.split('\n').map((link: string, index: number) => (
                       <li key={index}>
                         <a href={link} target="_blank" rel="noopener noreferrer">
                           {link}
@@ -78,5 +78,7 @@ const StorePage: React.FC = () => {
 };
 
 export default StorePage;
+
+
 
 

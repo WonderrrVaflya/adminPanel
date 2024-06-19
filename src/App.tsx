@@ -6,7 +6,7 @@ import StorePage from './pages/StorePage';
 const App: React.FC = () => {
   return (
     <Router>
-      <Routes>    
+      <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/stores/:id" element={<StorePage />} />
       </Routes>

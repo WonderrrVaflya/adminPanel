@@ -14,7 +14,7 @@ const Home: React.FC = () => {
 
   const fetchStores = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/stores');
+      const response = await axios.get('https://parsertovarov-6b40c4ac317f.herokuapp.com/sites');
       setStores(response.data);
     } catch (error) {
       console.error('Ошибка получения магазинов:', error);
@@ -23,23 +23,23 @@ const Home: React.FC = () => {
 
   const addStore = async (store: Store) => {
     try {
-      const response = await axios.post('http://localhost:5000/stores', store);
+      const response = await axios.post('https://parsertovarov-6b40c4ac317f.herokuapp.com/sites', store);
       setStores([...stores, response.data]);
     } catch (error) {
       console.error('Ошибка добавления магазина:', error);
     }
   };
 
-  const toggleActive = async (id: string, active: boolean) => {
-    setStores(stores.map(store => store.id === id ? { ...store, active } : store));
-  };
+  // const toggleActive = async (id: string, active: boolean) => {
+  //   setStores(stores.map(store => store.ID === id ? { ...store, active } : store));
+  // };
 
   return (
     <div>
       <Row justify="center" style={{ marginTop: '10px' }}>
         <Col span={20}>
           <StoreForm onAddStore={addStore} />
-          <StoreList stores={stores} onToggleActive={toggleActive} />
+          <StoreList />
         </Col>
       </Row>
     </div>
