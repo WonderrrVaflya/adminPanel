@@ -28,10 +28,8 @@ const StorePage: React.FC = () => {
   const addLinks = async (values: any) => {
     try {
       const newLinks = values.links.split('\n').filter((link: string) => link.trim() !== '');
-      const updatedLinks = store?.links ? store.links.split('\n').concat(newLinks) : newLinks;
-      const updatedStore = { ...store, URLs: updatedLinks.join('\n') };
-
-      await axios.put(`https://parsertovarov-6b40c4ac317f.herokuapp.com/sites`, updatedStore);
+      const updatedStore = { ...store, links: newLinks };
+      await axios.put(`http://localhost:5000/stores/${id}`, updatedStore);
       setStore(updatedStore as Store);
       form.resetFields();
     } catch (error) {
