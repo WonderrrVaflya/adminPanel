@@ -5,6 +5,7 @@
       "name": "Фарба",
       "latitude": "40.7128",
       "longitude": "-74.0060",
+      "address": "Тирасполь",
       "itemCount": 100,
       "scrapedItemCount": 80,
       "active": true,
@@ -13,37 +14,355 @@
         " sdfsdf sdfsdf",
         "sdfsdf",
         "sdfsdf"
-      ]
+      ],
+      "URLs": "1231231\n123123\n123123123\n123123\n123123123123123"
     },
     {
       "id": "2",
       "name": "Люрсан",
       "latitude": "34.0522",
       "longitude": "-118.2437",
+      "address": "Тирасполь",
       "itemCount": 200,
       "scrapedItemCount": 150,
       "lastUpdated": "22 09 1922",
-      "active": true
+      "active": true,
+      "URLs": "12312312\n312\nцуацу\nацу\nпц\nацу\nацуацуацуацац"
     },
     {
       "id": "1717837837990",
       "name": "керамин",
       "latitude": "44",
       "longitude": "55",
+      "address": "Бендеры",
       "itemCount": 200,
       "scrapedItemCount": 150,
       "lastUpdated": "22 09 1922",
-      "active": true
+      "active": true,
+      "URLs": "123123цйвцу\nцуауцацуа\nцуацуа\nкиеиенен\nнтктуккупцкпц"
+    }
+  ],
+    "products": [
+      {
+      "id": "1",
+      "storeId": "1",
+      "name": "Краска акриловая",
+      "description": "Краска акриловая для внутренних работ.",
+      "price": 20,
+      "image": "https://example.com/product1.jpg"
     },
     {
-      "id": "1718013246051",
-      "name": "1234",
-      "latitude": "234",
-      "longitude": "234",
-      "itemCount": 200,
-      "scrapedItemCount": 150,
-      "lastUpdated": "22 09 1922",
-      "active": true
+      "id": "2",
+      "storeId": "1",
+      "name": "Краска масляная",
+      "description": "Масляная краска для наружных работ.",
+      "price": 25,
+      "image": "https://example.com/product2.jpg"
+    },
+    {
+      "id": "3",
+      "storeId": "1",
+      "name": "Грунтовка",
+      "description": "Грунтовка глубокого проникновения.",
+      "price": 15,
+      "image": "https://example.com/product3.jpg"
+    },
+    {
+      "id": "4",
+      "storeId": "1",
+      "name": "Бытовая химия",
+      "description": "Средства для уборки и гигиены.",
+      "price": 10,
+      "image": "https://example.com/product4.jpg"
+    },
+    {
+      "id": "5",
+      "storeId": "1",
+      "name": "Малярный скотч",
+      "description": "Скотч для малярных работ.",
+      "price": 5,
+      "image": "https://example.com/product5.jpg"
+    },
+    {
+      "id": "6",
+      "storeId": "1",
+      "name": "Кисти малярные",
+      "description": "Кисти разных размеров для малярных работ.",
+      "price": 8,
+      "image": "https://example.com/product6.jpg"
+    },
+    {
+      "id": "7",
+      "storeId": "1",
+      "name": "Ролики для покраски",
+      "description": "Ролики различных типов для покраски.",
+      "price": 12,
+      "image": "https://example.com/product7.jpg"
+    },
+    {
+      "id": "8",
+      "storeId": "1",
+      "name": "Малярные перчатки",
+      "description": "Перчатки для защиты рук при малярных работах.",
+      "price": 4,
+      "image": "https://example.com/product8.jpg"
+    },
+    {
+      "id": "9",
+      "storeId": "1",
+      "name": "Шпатели малярные",
+      "description": "Шпатели разных размеров для малярных работ.",
+      "price": 6,
+      "image": "https://example.com/product9.jpg"
+    },
+    {
+      "id": "10",
+      "storeId": "1",
+      "name": "Малярная лента",
+      "description": "Лента для защиты поверхностей при малярных работах.",
+      "price": 3,
+      "image": "https://example.com/product10.jpg"
+    },
+    {
+      "id": "11",
+      "storeId": "2",
+      "name": "Клей ПВА",
+      "description": "Клей ПВА универсальный.",
+      "price": 12,
+      "image": "https://example.com/product11.jpg"
+    },
+    {
+      "id": "12",
+      "storeId": "2",
+      "name": "Шпатлевка",
+      "description": "Шпатлевка финишная.",
+      "price": 20,
+      "image": "https://example.com/product12.jpg"
+    },
+    {
+      "id": "13",
+      "storeId": "2",
+      "name": "Растворитель",
+      "description": "Растворитель для красок и лаков.",
+      "price": 15,
+      "image": "https://example.com/product13.jpg"
+    },
+    {
+      "id": "14",
+      "storeId": "2",
+      "name": "Краска акриловая",
+      "description": "Краска акриловая для внутренних работ.",
+      "price": 22,
+      "image": "https://example.com/product14.jpg"
+    },
+    {
+      "id": "15",
+      "storeId": "2",
+      "name": "Краска масляная",
+      "description": "Масляная краска для наружных работ.",
+      "price": 28,
+      "image": "https://example.com/product15.jpg"
+    },
+    {
+      "id": "16",
+      "storeId": "2",
+      "name": "Грунтовка",
+      "description": "Грунтовка глубокого проникновения.",
+      "price": 18,
+      "image": "https://example.com/product16.jpg"
+    },
+    {
+      "id": "17",
+      "storeId": "2",
+      "name": "Малярный скотч",
+      "description": "Скотч для малярных работ.",
+      "price": 8,
+      "image": "https://example.com/product17.jpg"
+    },
+    {
+      "id": "18",
+      "storeId": "2",
+      "name": "Кисти малярные",
+      "description": "Кисти разных размеров для малярных работ.",
+      "price": 10,
+      "image": "https://example.com/product18.jpg"
+    },
+    {
+      "id": "19",
+      "storeId": "2",
+      "name": "Ролики для покраски",
+      "description": "Ролики различных типов для покраски.",
+      "price": 14,
+      "image": "https://example.com/product19.jpg"
+    },
+    {
+      "id": "20",
+      "storeId": "2",
+      "name": "Малярные перчатки",
+      "description": "Перчатки для защиты рук при малярных работах.",
+      "price": 6,
+      "image": "https://example.com/product20.jpg"
+    },
+    {
+      "id": "21",
+      "storeId": "1",
+      "name": "Малярные валики",
+      "description": "Валики для покраски стен и потолков.",
+      "price": 7,
+      "image": "https://example.com/product21.jpg"
+    },
+    {
+      "id": "22",
+      "storeId": "1",
+      "name": "Малярная кисть плоская",
+      "description": "Кисть для равномерного нанесения краски.",
+      "price": 9,
+      "image": "https://example.com/product22.jpg"
+    },
+    {
+      "id": "23",
+      "storeId": "1",
+      "name": "Малярная совка",
+      "description": "Совка для смешивания и нанесения шпатлевки.",
+      "price": 5,
+      "image": "https://example.com/product23.jpg"
+    },
+    {
+      "id": "24",
+      "storeId": "1",
+      "name": "Малярная губка",
+      "description": "Губка для смешивания краски и ухода за инструментами.",
+      "price": 2,
+      "image": "https://example.com/product24.jpg"
+    },
+    {
+      "id": "25",
+      "storeId": "1",
+      "name": "Кисть для лака",
+      "description": "Кисть для равномерного нанесения лака.",
+      "price": 8,
+      "image": "https://example.com/product25.jpg"
+    },
+    {
+      "id": "26",
+      "storeId": "1",
+      "name": "Валик для пола",
+      "description": "Валик для покраски пола.",
+      "price": 10,
+      "image": "https://example.com/product26.jpg"
+    },
+    {
+      "id": "27",
+      "storeId": "1",
+      "name": "Грунтовка антикоррозийная",
+      "description": "Грунтовка для металлических поверхностей с защитой от коррозии.",
+      "price": 18,
+      "image": "https://example.com/product27.jpg"
+    },
+    {
+      "id": "28",
+      "storeId": "1",
+      "name": "Кисть для фасадов",
+      "description": "Кисть для нанесения краски на фасады зданий.",
+      "price": 12,
+      "image": "https://example.com/product28.jpg"
+    },
+    {
+      "id": "29",
+      "storeId": "1",
+      "name": "Шпатель пластиковый",
+      "description": "Шпатель для нанесения штукатурки и шпатлевки.",
+      "price": 4,
+      "image": "https://example.com/product29.jpg"
+    },
+    {
+      "id": "30",
+      "storeId": "1",
+      "name": "Малярные перчатки нитриловые",
+      "description": "Перчатки из нитрила для защиты рук при малярных работах.",
+      "price": 5,
+      "image": "https://example.com/product30.jpg"
+    },
+    {
+      "id": "31",
+      "storeId": "1717837837990",
+      "name": "Керамическая плитка",
+      "description": "Керамическая плитка для отделки стен и полов.",
+      "price": 35,
+      "image": "https://example.com/product31.jpg"
+    },
+    {
+      "id": "32",
+      "storeId": "1717837837990",
+      "name": "Керамический гранит",
+      "description": "Керамический гранит для наружных и внутренних работ.",
+      "price": 40,
+      "image": "https://example.com/product32.jpg"
+    },
+    {
+      "id": "33",
+      "storeId": "1717837837990",
+      "name": "Плиточный клей",
+      "description": "Клей для укладки керамической плитки.",
+      "price": 15,
+      "image": "https://example.com/product33.jpg"
+    },
+    {
+      "id": "34",
+      "storeId": "1717837837990",
+      "name": "Гидроизоляционная пленка",
+      "description": "Пленка для гидроизоляции поверхностей перед укладкой плитки.",
+      "price": 20,
+      "image": "https://example.com/product34.jpg"
+    },
+    {
+      "id": "35",
+      "storeId": "1717837837990",
+      "name": "Шпатель для плиточного клея",
+      "description": "Шпатель для равномерного нанесения клея при укладке плитки.",
+      "price": 8,
+      "image": "https://example.com/product35.jpg"
+    },
+    {
+      "id": "36",
+      "storeId": "1717837837990",
+      "name": "Грунт для керамики",
+      "description": "Грунтовка для подготовки поверхностей перед укладкой керамической плитки.",
+      "price": 12,
+      "image": "https://example.com/product36.jpg"
+    },
+    {
+      "id": "37",
+      "storeId": "1717837837990",
+      "name": "Специальная резиновая лопатка",
+      "description": "Лопатка для выравнивания клея при укладке керамической плитки.",
+      "price": 10,
+      "image": "https://example.com/product37.jpg"
+    },
+    {
+      "id": "38",
+      "storeId": "1717837837990",
+      "name": "Керамическая фуга",
+      "description": "Фуга для заполнения межплиточных швов.",
+      "price": 7,
+      "image": "https://example.com/product38.jpg"
+    },
+    {
+      "id": "39",
+      "storeId": "1717837837990",
+      "name": "Строительный уровень",
+      "description": "Уровень для проверки горизонтальности и вертикальности укладываемых плиток.",
+      "price": 18,
+      "image": "https://example.com/product39.jpg"
+    },
+    {
+      "id": "40",
+      "storeId": "1717837837990",
+      "name": "Резиновый молоток для плитки",
+      "description": "Молоток с резиновой насадкой для аккуратного удара при укладке плитки.",
+      "price": 6,
+      "image": "https://example.com/product40.jpg"
     }
   ]
-}
+  }
+  

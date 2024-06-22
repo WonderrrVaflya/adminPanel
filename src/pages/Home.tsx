@@ -1,49 +1,45 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import StoreForm from '../components/StoreForm';
-import StoreList from '../components/StoreList';
 import { Store } from '../types';
-import { Row, Col } from 'antd';
+import StoreList from '../components/StoreList';
+import StoreForm from '../components/StoreForm';
 
 const Home: React.FC = () => {
   const [stores, setStores] = useState<Store[]>([]);
 
   useEffect(() => {
+    const fetchStores = async () => {
+      try {
+        const response = await axios.get('http://localhost:5000/stores');
+        setStores(response.data);
+      } catch (error) {
+        console.error('Ошибка получения магазинов:', error);
+      }
+    };
+
     fetchStores();
   }, []);
 
-  const fetchStores = async () => {
+  const handleAddStore = async (store: Store) => {
     try {
-      const response = await axios.get('https://parsertovarov-6b40c4ac317f.herokuapp.com/sites');
-      setStores(response.data);
-    } catch (error) {
-      console.error('Ошибка получения магазинов:', error);
-    }
-  };
-
-  const addStore = async (store: Store) => {
-    try {
-      const response = await axios.post('https://parsertovarov-6b40c4ac317f.herokuapp.com/sites', store);
+      const response = await axios.post('http://localhost:5000/stores', store);
       setStores([...stores, response.data]);
     } catch (error) {
       console.error('Ошибка добавления магазина:', error);
     }
   };
 
-    const toggleActive = async (id: string, active: boolean) => {
-      setStores(stores.map(store => store.id === id ? { ...store, active } : store));
-    };
+  const handleToggleActive = (id: string, active: boolean) => {
+    setStores(stores.map(store => store.id === id ? { ...store, active } : store));
+  };
 
   return (
     <div>
-      <Row justify="center" style={{ marginTop: '10px' }}>
-        <Col span={20}>
-          <StoreForm onAddStore={addStore} />
-          <StoreList />
-        </Col>
-      </Row>
+      <StoreForm onAddStore={handleAddStore} />
+      <StoreList stores={stores} onToggleActive={handleToggleActive} />
     </div>
   );
 };
 
 export default Home;
+

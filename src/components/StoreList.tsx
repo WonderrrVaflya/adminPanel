@@ -1,53 +1,87 @@
-import React, { useEffect, useState } from 'react';
-import { Table } from 'antd';
+import React from 'react';
+import { Table, Button, Popover } from 'antd';
 import { Store } from '../types';
+import { SettingOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-const StoreList: React.FC = () => {
-  const [stores, setStores] = useState<Store[]>([]);
+interface StoreListProps {
+  stores: Store[];
+  onToggleActive: (id: string, active: boolean) => void;
+}
+
+const StoreList: React.FC<StoreListProps> = ({ stores, onToggleActive }) => {
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const fetchStores = async () => {
-      try {
-        const response = await axios.get('https://parsertovarov-6b40c4ac317f.herokuapp.com/sites');
-        setStores(response.data);
-      } catch (error) {
-        console.error('Ошибка получения списка магазинов:', error);
-      }
-    };
-
-    fetchStores();
-  }, []);
+  const handleToggleActive = async (id: string, currentActive: boolean) => {
+    try {
+      const updatedStore = { active: !currentActive };
+      await axios.patch(`http://localhost:5000/stores/${id}`, updatedStore);
+      onToggleActive(id, !currentActive);
+    } catch (error) {
+      console.error('Ошибка изменения статуса активности:', error);
+    }
+  };
 
   const columns = [
     {
       title: 'Название магазина',
-      dataIndex: 'Name',
-      key: 'Name',
+      dataIndex: 'name',
+      key: 'name',
       render: (text: string, record: Store) => (
-        <span style={{ cursor: 'pointer', color: '#1890ff' }} onClick={() => navigate(`/stores/${record.id}`)}>
-          {text}
-        </span>
+        <>
+          <Popover
+            content={
+              <div>
+                <Button type="link" onClick={() => handleToggleActive(record.id, record.active)}>
+                  {record.active ? 'Остановить' : 'Запустить'}
+                </Button>
+              </div>
+            }
+            trigger="click"
+          >
+            <SettingOutlined style={{ marginRight: 10 }} />
+          </Popover>
+          <span style={{ cursor: 'pointer', color: '#1890ff' }} onClick={() => navigate(`/stores/${record.id}`)}>
+            {text}
+          </span>
+        </>
       ),
     },
     {
-      title: 'Ссылки',
-      dataIndex: 'URLs',
-      key: 'URLs',
-      render: (urls: string) => (
-        <ul>
-          {urls.split('\n').map((link, index) => (
-            <li key={index}><a href={link} target="_blank" rel="noopener noreferrer">{link}</a></li>
-          ))}
-        </ul>
+      title: 'Количество товаров',
+      dataIndex: 'itemCount',
+      key: 'itemCount',
+    },
+    {
+      title: 'Запарсено за сегодня',
+      dataIndex: 'scrapedItemCount',
+      key: 'scrapedItemCount',
+    },
+    {
+      title: 'Активность',
+      dataIndex: 'active',
+      key: 'active',
+      render: (active: boolean) => (
+        <span>
+          <span
+            style={{
+              display: 'inline-block',
+              width: '10px',
+              height: '10px',
+              borderRadius: '50%',
+              backgroundColor: active ? 'green' : 'red',
+            }}
+          ></span>
+        </span>
       ),
     },
   ];
 
-  return <Table columns={columns} dataSource={stores} rowKey="ID" />;
+  return <Table columns={columns} dataSource={stores} rowKey="id" />;
 };
 
 export default StoreList;
+
+
 

@@ -9,17 +9,17 @@ interface StoreFormProps {
 const StoreForm: React.FC<StoreFormProps> = ({ onAddStore }) => {
   const [form] = Form.useForm();
 
-  const onFinish = (values: Omit<Store, 'id' | 'links'>) => {
+  const onFinish = (values: Omit<Store, 'id' | 'URLs' | 'active' | 'itemCount' | 'scrapedItemCount'>) => {
     const newStore: Store = {
-      id: Number(Date.now()),
+      id: Date.now().toString(),
       name: values.name,
-      links: '',
-      latitude: '',
-      longitude: '',
+      latitude: values.latitude,
+      longitude: values.longitude,
+      address: values.address,
+      URLs: '',
+      active: true,
       itemCount: 0,
-      scrapedItemCount: 0,
-      lastUpdated: '',
-      active: false
+      scrapedItemCount: 0 
     };
     onAddStore(newStore);
     form.resetFields();
@@ -32,10 +32,13 @@ const StoreForm: React.FC<StoreFormProps> = ({ onAddStore }) => {
           <Form.Item name="name" label="Название Магазина" rules={[{ required: true, message: 'Введите название магазина!' }]}>
             <Input />
           </Form.Item>
-          <Form.Item name="latitude" label="Широта" rules={[{ required: true, message: 'Введите Широту!' }]}>
+          <Form.Item name="latitude" label="Широта" rules={[{ required: true, message: 'Введите широту!' }]}>
             <Input />
           </Form.Item>
-          <Form.Item name="longitude" label="Долгота" rules={[{ required: true, message: 'Введите Долготу!' }]}>
+          <Form.Item name="longitude" label="Долгота" rules={[{ required: true, message: 'Введите долготу!' }]}>
+            <Input />
+          </Form.Item>
+          <Form.Item name="address" label="Адрес" rules={[{ required: true, message: 'Введите адрес!' }]}>
             <Input />
           </Form.Item>
           <Form.Item>
@@ -48,4 +51,6 @@ const StoreForm: React.FC<StoreFormProps> = ({ onAddStore }) => {
 };
 
 export default StoreForm;
+
+
 
