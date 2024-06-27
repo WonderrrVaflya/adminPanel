@@ -1,40 +1,49 @@
-import React from 'react';
-import { Table, Button, Popover } from 'antd';
-import { Store } from '../types';
-import { SettingOutlined } from '@ant-design/icons';
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import React from "react";
+import { Table, Button, Popover } from "antd";
+import { Store } from "../types";
+import { SettingOutlined } from "@ant-design/icons";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 interface StoreListProps {
   stores: Store[];
-  onToggleActive: (id: string, active: boolean) => void;
 }
 
-const StoreList: React.FC<StoreListProps> = ({ stores, onToggleActive }) => {
+const StoreList: React.FC<StoreListProps> = ({ stores }) => {
   const navigate = useNavigate();
 
-  const handleToggleActive = async (id: string, currentActive: boolean) => {
+  const startParser = async (ID:string) => {
     try {
-      const updatedStore = { active: !currentActive };
-      await axios.patch(`http://localhost:5000/stores/${id}`, updatedStore);
-      onToggleActive(id, !currentActive);
+      if (ID) {
+        const foundStore = stores.find(
+          (store: Store) =>store.ID.toString() === ID
+        );
+        if (foundStore) {
+          await axios.post(
+            "https://parsertovarov-6b40c4ac317f.herokuapp.com/parse",
+            { name: foundStore.Name }
+          );
+        } 
+      }
     } catch (error) {
-      console.error('Ошибка изменения статуса активности:', error);
+      console.error("Ошибка запуска парсера:", error);
     }
   };
 
   const columns = [
     {
-      title: 'Название магазина',
-      dataIndex: 'name',
-      key: 'name',
+      title: "Название магазина",
+      dataIndex: "Name",
+      key: "name",
       render: (text: string, record: Store) => (
         <>
           <Popover
             content={
               <div>
-                <Button type="link" onClick={() => handleToggleActive(record.id, record.active)}>
-                  {record.active ? 'Остановить' : 'Запустить'}
+                <Button
+                  type="link" onClick={() => startParser(record.ID)}
+                >
+                  {record.active ? "Остановить" : "Запустить"}
                 </Button>
               </div>
             }
@@ -42,35 +51,38 @@ const StoreList: React.FC<StoreListProps> = ({ stores, onToggleActive }) => {
           >
             <SettingOutlined style={{ marginRight: 10 }} />
           </Popover>
-          <span style={{ cursor: 'pointer', color: '#1890ff' }} onClick={() => navigate(`/stores/${record.id}`)}>
+          <span
+            style={{ cursor: "pointer", color: "#1890ff" }}
+            onClick={() => navigate(`/stores/${record.ID}`)}
+          >
             {text}
           </span>
         </>
       ),
     },
     {
-      title: 'Количество товаров',
-      dataIndex: 'itemCount',
-      key: 'itemCount',
+      title: "Количество товаров",
+      dataIndex: "itemCount",
+      key: "itemCount",
     },
     {
-      title: 'Запарсено за сегодня',
-      dataIndex: 'scrapedItemCount',
-      key: 'scrapedItemCount',
+      title: "Запарсено за сегодня",
+      dataIndex: "scrapedItemCount",
+      key: "scrapedItemCount",
     },
     {
-      title: 'Активность',
-      dataIndex: 'active',
-      key: 'active',
+      title: "Активность",
+      dataIndex: "active",
+      key: "active",
       render: (active: boolean) => (
         <span>
           <span
             style={{
-              display: 'inline-block',
-              width: '10px',
-              height: '10px',
-              borderRadius: '50%',
-              backgroundColor: active ? 'green' : 'red',
+              display: "inline-block",
+              width: "10px",
+              height: "10px",
+              borderRadius: "50%",
+              backgroundColor: active ? "green" : "red",
             }}
           ></span>
         </span>
@@ -78,10 +90,7 @@ const StoreList: React.FC<StoreListProps> = ({ stores, onToggleActive }) => {
     },
   ];
 
-  return <Table columns={columns} dataSource={stores} rowKey="id" />;
+  return <Table columns={columns} dataSource={stores} rowKey="ID" />;
 };
 
 export default StoreList;
-
-
-

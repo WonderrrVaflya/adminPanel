@@ -1,21 +1,24 @@
 export interface Store {
-  id: string;
-  name: string;
-  latitude: string;
-  longitude: string;
-  address: string;
+  ID: string;
+  Name: string;
+  latitude?: string;
+  longitude?: string;
+  address?: string;
   URLs: string;
-  active: boolean;
-  itemCount: number;
-  scrapedItemCount: number;
-  tasks: string[]
+  active?: boolean;
+  itemCount?: number;
+  scrapedItemCount?: number;
+  tasks: Task[];
 }
 
-export interface Product {
-  id: string;
-  storeId: string;
-  name: string;
-  description: string;
-  price: number;
-  image: string;
+export interface Task {
+  id: number;
+  site_id: number;
+  status: string;
+  start_time: string;
+  end_time: string;
+  products_count: number;
+  urls: string;
+  created_at: string;
+  updated_at: string;
 }
