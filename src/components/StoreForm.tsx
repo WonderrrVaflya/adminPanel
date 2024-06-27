@@ -19,7 +19,8 @@ const StoreForm: React.FC<StoreFormProps> = ({ onAddStore }) => {
       URLs: '',
       active: true,
       itemCount: 0,
-      scrapedItemCount: 0 
+      scrapedItemCount: 0,
+      tasks: []
     };
     onAddStore(newStore);
     form.resetFields();

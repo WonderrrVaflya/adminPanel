@@ -8,6 +8,7 @@ export interface Store {
   active: boolean;
   itemCount: number;
   scrapedItemCount: number;
+  tasks: string[]
 }
 
 export interface Product {

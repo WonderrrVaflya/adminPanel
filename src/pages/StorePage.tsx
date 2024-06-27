@@ -35,6 +35,19 @@ const StorePage: React.FC = () => {
     }
   };
 
+
+  const startParser = async () => {
+    try {
+      if (store) {
+        await axios.post('https://parsertovarov-6b40c4ac317f.herokuapp.com/parse', { name: store.name });
+        const response = await axios.get(`http://localhost:8080/sites/${id}`);
+        setStore(response.data);
+      }
+    } catch (error) {
+      console.error('Ошибка запуска парсера:', error);
+    }
+  };
+
   return (
     <Row justify="center" style={{ marginTop: '10px' }}>
       <Col span={20}>
@@ -46,6 +59,7 @@ const StorePage: React.FC = () => {
               <p>Широта: <b>{store.latitude}</b></p>
               <p>Долгота: <b>{store.longitude}</b></p>
               <h2>Добавить ссылки</h2>
+              <Button type="primary" onClick={startParser}>Запустить парсер</Button>
               <Form form={form} onFinish={addLinks}>
                 <Form.Item name="links" rules={[{ required: true, message: 'Введите ссылки!' }]}>
                   <Input.TextArea rows={10} placeholder="Вставьте ссылки здесь, по одной на строку" />
