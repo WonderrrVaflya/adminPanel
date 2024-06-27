@@ -2,7 +2,6 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Home from './pages/Home';
 import StorePage from './pages/StorePage';
-import SearchPage from './pages/SearchPage';
 import { Col, Row, Tabs } from 'antd';
 
 const App: React.FC = () => {
@@ -17,7 +16,6 @@ const App: React.FC = () => {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/stores/:id" element={<StorePage />} />
-            <Route path="/search" element={<SearchPage />} />
           </Routes>
         </Col>
       </Row>
